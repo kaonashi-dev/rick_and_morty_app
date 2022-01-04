@@ -1,0 +1,1 @@
+export 'package:rick_and_morty_app/models/character.dart';
