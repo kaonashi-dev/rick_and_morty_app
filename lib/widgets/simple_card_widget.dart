@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:rick_and_morty_app/models/models.dart';
+import 'package:rick_and_morty_app/widgets/widgets.dart';
 
 class SimpleCardWidget extends StatelessWidget {
    
@@ -29,7 +30,15 @@ class SimpleCardWidget extends StatelessWidget {
       return Stack(
          children: [
                
-            Image.network(character.image, fit: BoxFit.cover, width: size.width,),
+            Image.network(
+               character.image, 
+               fit: BoxFit.cover, 
+               width: size.width,
+               loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return const LoadingWidget();
+               },
+            ),
             
             Container(
                padding: const EdgeInsets.all(9),
@@ -49,7 +58,7 @@ class SimpleCardWidget extends StatelessWidget {
    }
 
    BoxDecoration _boxDecoration() => BoxDecoration(
-      color: Colors.grey,
+      color: Colors.white,
       borderRadius: BorderRadius.circular(15),
       boxShadow: [
          BoxShadow(

@@ -19,7 +19,9 @@ class HomeScreen extends StatelessWidget {
             title: const Text('Rick and Morty'),
             centerTitle: true,
          ),
-         body: SafeArea(
+         body: ( charactersService.isLoading )
+         ? const LoadingWidget()
+         :SafeArea(
             child: GridView.builder(
                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                   maxCrossAxisExtent: 500,
