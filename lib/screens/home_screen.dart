@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:rick_and_morty_app/services/services.dart';
+import 'package:rick_and_morty_app/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
    
@@ -19,17 +20,18 @@ class HomeScreen extends StatelessWidget {
             centerTitle: true,
          ),
          body: SafeArea(
-            child: GridView.count(
-               crossAxisCount: 2,
-               children: List.generate(charactersService.characters.length, (index) {
-                  return Center(
-                     child: Text(
-                        charactersService.characters[index].name,
-                        style: Theme.of(context).textTheme.headline5,
-                     ),
-                  );
-               }),
-            ),
+            child: GridView.builder(
+               gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 500,
+                  childAspectRatio: 1,
+                  crossAxisSpacing: 0,
+                  mainAxisSpacing: 0
+               ),
+               itemCount: charactersService.characters.length,
+               itemBuilder: (BuildContext context, int index) {
+                  return SimpleCardWidget(character: charactersService.characters[index]);
+               }
+            )
          ),
       );
    }
