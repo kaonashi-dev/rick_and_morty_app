@@ -11,15 +11,20 @@ class SimpleCardWidget extends StatelessWidget {
    @override
    Widget build(BuildContext context) {
 
-      return Container(
-         height: 300,
-         width: 300,
-         margin: const EdgeInsets.all(19),
-         decoration: _boxDecoration(),
-         child: ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: _bodyCard(context)
+      return GestureDetector(
+         child: Container(
+            height: 300,
+            width: 300,
+            margin: const EdgeInsets.all(19),
+            decoration: _boxDecoration(),
+            child: ClipRRect(
+               borderRadius: BorderRadius.circular(15),
+               child: _bodyCard(context)
+            ),
          ),
+         onTap: () {
+            Navigator.pushNamed(context, 'details', arguments: character);
+         },
       );
    }
 
@@ -47,7 +52,7 @@ class SimpleCardWidget extends StatelessWidget {
                   maxLines: 3,
                   style: const TextStyle(
                      color: Colors.black,
-                     fontSize: 23,
+                     fontSize: 19,
                      fontWeight: FontWeight.bold,
                      overflow: TextOverflow.ellipsis
                   ),

@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
          :SafeArea(
             child: GridView.builder(
                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 500,
+                  maxCrossAxisExtent: 300,
                   childAspectRatio: 1,
                   crossAxisSpacing: 0,
                   mainAxisSpacing: 0
