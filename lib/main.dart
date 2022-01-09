@@ -25,6 +25,7 @@ class StateApp extends StatelessWidget {
       return MultiProvider(
          providers: [
             ChangeNotifierProvider(create: ( _ ) => CharactersService()),
+            ChangeNotifierProvider(create: ( _ ) => FavoritesService()),
          ],
          child: const MyApp(),
       );

@@ -9,6 +9,9 @@ class AppTheme {
          primaryColor: AppColors.primary,
          appBarTheme: AppBarTheme(
             backgroundColor: AppColors.primary
+         ),
+         floatingActionButtonTheme: const FloatingActionButtonThemeData(
+            backgroundColor: Colors.deepPurple
          )
       );
    }
