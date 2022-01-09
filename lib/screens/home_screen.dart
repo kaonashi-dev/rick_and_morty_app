@@ -11,14 +11,11 @@ class HomeScreen extends StatelessWidget {
    @override
    Widget build(BuildContext context) {
 
-      // final size = MediaQuery.of(context).size;
       final charactersService = Provider.of<CharactersService>(context);
+      final favoritesService = Provider.of<FavoritesService>(context);
 
       return Scaffold(
-         appBar: AppBar(
-            title: const Text('Rick and Morty'),
-            centerTitle: true,
-         ),
+         appBar: AppBarWidget.headerApp(favoritesService),
          body: ( charactersService.isLoading )
          ? const LoadingWidget()
          :SafeArea(
@@ -37,4 +34,5 @@ class HomeScreen extends StatelessWidget {
          ),
       );
    }
+
 }

@@ -4,11 +4,15 @@ import 'package:localstorage/localstorage.dart';
 class FavoritesService extends ChangeNotifier{
 
    final LocalStorage storage = LocalStorage('favorites');
-   final List<int> favorites = [];
+   List<int> favorites = [];
 
-   List getFavorites( String key ) {
-      final List data = storage.getItem(key) ?? [];
-      return data;
+   FavoritesService() {
+      getFavorites();
+   }
+
+   getFavorites() async {
+      final List<int> data = await storage.getItem('FAVORITES_APP') ?? [];
+      favorites = data;
    }
 
    updateFavorites( int characterId, int action ) {
